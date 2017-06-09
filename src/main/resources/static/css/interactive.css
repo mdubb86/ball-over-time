@@ -1,0 +1,238 @@
+body {
+	padding-top: 65px;
+	background-color: #ddd;
+}
+
+.navbar svg path {
+	fill: #333333;
+}
+
+button.btn {
+	font-size: 18px;
+}
+
+.navbar-brand span {
+	margin-left: 50px;
+}
+
+.navbar-brand svg {
+	width: 30px;
+	height: 30px;
+}
+
+#basketball-icon {
+	position:absolute;
+	left: 5px;
+	top: 5px;
+}
+
+#slash-icon {
+	position:absolute;
+	left: 17px;
+	top: 17px;
+}
+
+#clock-icon {
+	position: absolute;
+	left: 30px;
+	top: 30px;
+}
+
+#share-link {
+	padding-top: 10px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+}
+
+h4 {
+	text-align: center;
+	color: #333333;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+p {
+	color: #333333;
+	font-size: 18px;
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+label {
+	color: #333333;
+	font-size: 16px;
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button {
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+
+#settings {
+	height: 170px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background: white;
+	border-radius: 5px;
+	margin-left: 10px;
+	padding: 10px;
+}
+
+#player-container {
+	height: 170px;
+	overflow-x: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background: white;
+	border-radius: 5px;
+}
+
+#chart-container {
+	border-radius: 10px;
+	background-color: white;
+	padding: 4px;
+}
+
+p.name {
+	top: 88px;
+	font-size: 14px;
+	left: 0;
+	width: 120px;
+	float: left;
+	position: absolute;
+	x: 0px;
+	y: 0px;
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+	text-align: center;
+	display: none;
+	border-radius: 5px;
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#player-container-subtitle {
+	text-align: center;
+	color: #666666;
+	font-size: 12px;
+	margin-top: -7px;
+	margin-bottom: 0px;
+}
+
+.grid-item:hover p.name {
+	display: block
+}
+
+#stat-grid {
+	min-height: 400px;
+	max-height: 400px;
+	overflow-y: auto;
+}
+
+.stat-grid-item {
+	position: relative;
+	float: left;
+	width: 160px;
+	height: 60px;
+	margin: 5px;
+	padding: 5px;
+	background: white;
+	border-radius: 10px;
+	border-color: #eeeeee;
+	top: 0px;
+	border-width: 1px;
+	border-style: solid;
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: center;
+	font-size: 15px;
+}
+
+.stat-grid-item:hover {
+	background: #eeeeee;
+	border-color: #cccccc;
+}
+
+.stat-grid-item.selected {
+	color: #ffffff;
+	background: #4582EC;
+	border-color: #1148A6;
+}
+
+/* #player-container h4 {
+	margin-top: 0px;
+} */
+span.twitter-typeahead {
+	width: 100%;
+}
+
+input.typeahead {
+	width: 100%;
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #333333;
+	font-size: 18px;
+	border-color: #dddddd;
+	border-radius: 6px;
+	border-width: 1px;
+	padding-top: 27px;
+	padding-bottom: 27px;
+}
+
+input.typeahead.tt-hint {
+	display: none;
+}
+
+input.typeahead:focus {
+	border-color: #bbbbbb;
+	border-width: 1px;
+}
+
+.tt-suggestion {
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+}
+
+.tt-suggestion:hover {
+	background-color: #31b0d5;
+}
+
+.tt-suggestion.tt-cursor {
+	background-color: #31b0d5;
+}
+
+.grid-item img {
+	background-color: white; width : 120px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	border-radius: 5px;
+	width: 120px;
+}
+
+.grid-item img {
+	padding: 0px;
+}
+
+/* Makes aggregation radio buttons popover not wrap */
+.popover-content {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+.highcharts-title {
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.highcharts-subtitle {
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.highcharts-tooltip-text {
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.highcharts-axis-labels {
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.highcharts-axis-title {
+	font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
