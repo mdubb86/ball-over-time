@@ -96,8 +96,6 @@ $(function() {
         addPlayer(player);
     });
 
-
-
     $('#stat-search-input').on('change keyup paste', function() {
         $statgrid.isotope();
     });
@@ -141,7 +139,6 @@ $(function() {
         });
     });
 
-
     $('#aggregate-button').popover({
         html: true,
         content: '<label class="radio-inline"> <input type="radio" name="aggregation-options" id="season-aggregation-radio" value="season" /> Season </label> <label class="radio-inline"> <input type="radio" name="aggregation-options" id="month-aggregation-radio" value="month" /> Month </label> <label class="radio-inline"> <input type="radio" name="aggregation-options" id="none-aggregation-radio" value="none" /> None </label>'
@@ -176,8 +173,10 @@ $(function() {
             addPlayer(player);
         });
     }
-
-
+    
+    $('#share-icon').click(function() {
+        console.log('Shared');
+    });
 
     chart = Highcharts.chart('chart', {
         chart: {

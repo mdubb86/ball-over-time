@@ -43,7 +43,7 @@ public class SiteController {
     @RequestMapping("/interactive")
     public String loadInteractive(Model model) {
         model.addAttribute("stats", statService.getStats());
-        return "players";
+        return "interactive";
     }
     
     @RequestMapping("/players")
