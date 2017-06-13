@@ -11,6 +11,10 @@ button.btn {
 	font-size: 18px;
 }
 
+.input-group .btn {
+	font-size: 16px;
+}
+
 .navbar-brand span {
 	margin-left: 50px;
 }
@@ -94,6 +98,8 @@ button {
 }
 
 p.name {
+	overflow-y: hidden;
+	max-height: 20px;
 	top: 88px;
 	font-size: 14px;
 	left: 0;

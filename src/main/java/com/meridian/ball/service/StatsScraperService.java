@@ -48,6 +48,7 @@ public class StatsScraperService {
     private final Set<String> traditionalBoxScoreFields;
     private final Set<String> advancedBoxScoreFields;
 
+    private final SeasonService seasonService;
     private final ObjectMapper objectMapper;
     private final TeamRepository teamRepo;
     private final PlayerRepository playerRepo;
@@ -55,8 +56,9 @@ public class StatsScraperService {
     private final StatLineRepository statLineRepo;
 
     @Autowired
-    public StatsScraperService(ObjectMapper objectMapper, TeamRepository teamRepo, PlayerRepository playerRepo,
+    public StatsScraperService(SeasonService seasonService, ObjectMapper objectMapper, TeamRepository teamRepo, PlayerRepository playerRepo,
             GameRepository gameRepo, StatLineRepository statLineRepo) {
+        this.seasonService = seasonService;
         this.objectMapper = objectMapper;
         this.gameRepo = gameRepo;
         this.playerRepo = playerRepo;
@@ -82,7 +84,7 @@ public class StatsScraperService {
         // Start in Oct 20017, move forward, no idea what I missed
         LocalDate d = LocalDate.parse("02/11/2011", formatter);
         LocalDate end = LocalDate.parse("01/01/2012", formatter);
-        while (d.isBefore(end)) {
+        while (d.isBefore(end) && !seasonService.isPreseason(d)) {
             this.processGames(d, false);
             d = d.plusDays(1);
         }

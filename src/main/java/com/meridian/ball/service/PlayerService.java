@@ -1,11 +1,13 @@
 package com.meridian.ball.service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
-import com.meridian.ball.model.PlayerNameAndId;
+import com.meridian.ball.model.Player;
 import com.meridian.ball.repository.PlayerRepository;
 
 @Service
@@ -17,9 +19,14 @@ public class PlayerService {
         this.playerRepo = playerRepo;
     }
     
-    public List<PlayerNameAndId> findByUsernameContaining(String query) {
-        return playerRepo.findByDisplayNameContainingIgnoreCaseOrderByDisplayNameDesc(query).stream()
-                .map(p -> new PlayerNameAndId(p.getPlayerId(), p.getDisplayName()))
-                .collect(Collectors.toList());
+    public List<Player> findByIds(String playerIdsStr) {
+        Set<Integer> playerIds = Stream.of(playerIdsStr.split(","))
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toSet());
+        return playerRepo.findPlayersByIds(playerIds);
+    }
+    
+    public List<Player> findByUsernameContaining(String query) {
+        return playerRepo.findByDisplayNameContainingIgnoreCaseOrderByDisplayNameDesc(query);
     }
 }

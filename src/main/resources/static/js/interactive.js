@@ -11,7 +11,7 @@ $(function() {
 
     $('.typeahead').typeahead(null, {
         name: 'players',
-        display: 'display_name',
+        display: 'displayName',
         source: players,
         highlight: true,
         hint: false
@@ -31,18 +31,18 @@ $(function() {
     function statOrAggregationChanged() {
         chart.update({
             title: {
-                text: $('#' + selectedStat + "-item").text() + ' over time'
+                text: $('#' + stat + "-item").text() + ' over time'
             },
             yAxis: {
                 title: {
-                    text: $('#' + selectedStat + "-item").text()
+                    text: $('#' + stat + "-item").text()
                 }
             }
         });
         selected.forEach(function(player) {
-            fetchData(player.id, function(data) {
+            fetchData(player.playerId, function(data) {
                 chart.series.forEach(function(series) {
-                    if (series.name === player.display_name) {
+                    if (series.name === player.displayName) {
                         series.setData(data)
                     }
                 });
@@ -51,26 +51,30 @@ $(function() {
     }
 
     function fetchData(playerId, callback) {
-        $.getJSON('data?playerId=' + playerId + '&stat=' + selectedStat + '&aggregation=' + selectedAggregation, function (data) {
+        $.getJSON('data?playerId=' + playerId + '&stat=' + stat + '&aggregation=' + aggregation, function (data) {
             callback(data)
         });
     }
 
     function addPlayer(player) {
         // Add player picture to selected area
-        var $item = $('<div class="grid-item" player_id="' + player.id + '"><img src="http://stats.nba.com/media/players/230x185/' + player.id + '.png"/><p class="name">' + player.display_name + '</div>');
+        var $item = $('<div class="grid-item" player_id="' + player.playerId + '"><img src="http://stats.nba.com/media/players/230x185/' + player.playerId + '.png"/><p class="name">' + player.displayName + '</div>');
         $grid.append($item)
         .isotope('appended', $item)
         .isotope();
 
+        $name = $item.children('p.name').first();
+//      $name.offset($item.height() - $name.height(), 0);
+//      console.log($name.css('height'));
+
         // Fetch data and create series on chart
-        fetchData(player.id, function(data) {
+        fetchData(player.playerId, function(data) {
             chart.addSeries({
-                name: player.display_name,
+                name: player.displayName,
                 data: data
             });
             selected.push(player);
-            Cookies.set('players', JSON.stringify(selected));
+            Cookies.set('players', selected.map(function(p) { return p.playerId}).join(','));
         });
 
         // Setup click listener to remove player
@@ -78,7 +82,7 @@ $(function() {
             id = $item.attr("player_id");
             var idx = -1;
             for(var i = 0; i < selected.length; i++) {
-                if (selected[i].id == id) {
+                if (selected[i].playerId == id) {
                     idx = i;
                     break;
                 }
@@ -87,7 +91,7 @@ $(function() {
             chart.series[idx].remove();
             $item.remove();
             $grid.isotope();
-            Cookies.set('players', JSON.stringify(selected));
+            Cookies.set('players', selected.map(function(p) {return p.playerId}).join(','));
         });
     }
 
@@ -105,6 +109,7 @@ $(function() {
         $(this).siblings().removeClass('active');
         $statgrid.isotope();
     });
+
     var selectedFilter = 'All'
         var $statgrid = $('#stat-grid').isotope({
             itemSelector: '.stat-grid-item',
@@ -125,55 +130,62 @@ $(function() {
         $(this).addClass('selected');
         $(this).siblings().removeClass('selected');
         $('#stat-modal').modal('hide');
-        selectedStat = $(this).attr('id').slice(0, -5);
-        Cookies.set('stat', selectedStat)
+        stat = $(this).attr('id').slice(0, -5);
+        Cookies.set('stat', stat)
         statOrAggregationChanged();
     });
 
     $('#aggregate-button').on('inserted.bs.popover', function () {
-        $('#' + selectedAggregation + '-aggregation-radio').attr('checked', 'true');
+        $('#' + aggregation + '-aggregation-radio').attr('checked', 'true');
         $('.popover input').click(function() {
-            selectedAggregation = $(this).val();
-            Cookies.set('aggregation', selectedAggregation);
+            aggregation = $(this).val();
+            Cookies.set('aggregation', aggregation);
+            $('#aggregate-button').popover('hide');
             statOrAggregationChanged();
         });
     });
 
-    $('#aggregate-button').popover({
+    $('#aggregate-button').click(function() {
+        $(this).popover('toggle')
+    }).popover({
         html: true,
+        trigger: 'manual',
         content: '<label class="radio-inline"> <input type="radio" name="aggregation-options" id="season-aggregation-radio" value="season" /> Season </label> <label class="radio-inline"> <input type="radio" name="aggregation-options" id="month-aggregation-radio" value="month" /> Month </label> <label class="radio-inline"> <input type="radio" name="aggregation-options" id="none-aggregation-radio" value="none" /> None </label>'
+    }).on('hidden.bs.popover', function() {
+        setTimeout(function() {
+            $('#aggregate-button').blur();
+        }, 1);
+    });
+
+    $('#stat-modal').on('show.bs.modal', function (e) {
+        $('#aggregate-button').popover('hide');
     });
 
     $('#stat-modal').on('shown.bs.modal', function (e) {
         $statgrid.isotope()
-    })
+    });
 
     $('#stat-modal').on('hidden.bs.modal', function (e) {
         $('#stat-search-input').val('');
+        setTimeout(function() {
+            $('#stat-select-button').blur();
+        }, 1);
     })
 
-    var selectedAggregation = Cookies.get("aggregation");
-    if (selectedAggregation === undefined) {
-        selectedAggregation = 'season';
-        Cookies.set('aggregation', selectedAggregation);
-    }
-
-    var selectedStat = Cookies.get("stat");
-    if (selectedStat === undefined) {
-        selectedStat = 'points';
-        Cookies.set("stat", selectedStat);
-    }
-    $('#' + selectedStat + "-item").addClass("selected");
-
-
-    var selected = [];
-    var playerJson = Cookies.get('players');
-    if (playerJson != undefined) {
-        JSON.parse(playerJson).forEach(function(player) {
-            addPlayer(player);
+    $('#share-icon').click(function() {
+        $.getJSON('share', function (data) {
+            console.log('created ' + data.chartId);
         });
-    }
-    
+        $('#share-modal').modal('show');
+    });
+
+    $('#' + stat + "-item").addClass("selected");
+
+    var selected = []
+    toSelect.forEach(function(player) {
+        addPlayer(player);
+    });
+
     $('#share-icon').click(function() {
         console.log('Shared');
     });
@@ -183,7 +195,7 @@ $(function() {
             zoomType: 'x'
         },
         title: {
-            text: $('#' + selectedStat + "-item").text() + ' over time'
+            text: $('#' + stat + "-item").text() + ' over time'
         },
         subtitle: {
             text: document.ontouchstart === undefined ?
@@ -194,22 +206,36 @@ $(function() {
         },
         yAxis: {
             title: {
-                text: $('#' + selectedStat + "-item").text()
+                text: $('#' + stat + "-item").text()
             }
         },
         legend: {
             enabled: false
         },
         plotOptions: {
+            line: {
+                marker: {
+                    enabled: false,
+                    symbol: 'circle'
+                }
+            },
             series: {
                 connectNulls: true
             }
         },
         tooltip: {
             formatter: function () {
-                var d = new Date(this.x);
+                var m = moment(this.x).add(23, 'hours');
                 var numDecimals = this.y > 1 ? 1 : 2;
-                return this.series.name + '<br/>' + d.toLocaleString("en-us", { month: "short" }) + " '" + d.getFullYear().toString().substr(-2) + ': <b>' + this.y.toFixed(numDecimals) + '</b>';
+                var dateStr = '';
+                if (aggregation == 'season') {
+                    dateStr = m.format('YYYY');
+                } else if (aggregation == 'month') {
+                    dateStr = m.format("MMM 'YY");
+                } else {
+                    dateStr = m.format("MMM DD 'YY");
+                }
+                return this.series.name + '<br/>' + dateStr + ': <b>' + this.y.toFixed(numDecimals) + '</b>';
             }
         },
     });
