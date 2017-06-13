@@ -23,7 +23,7 @@ public class SeasonService {
     @Autowired
     GameRepository gameRepo;
 
-    @PostConstruct
+//    @PostConstruct
     public void eliminatePreseason() {
         Iterable<Game> games = gameRepo.findAllByOrderByDateAsc();
 
