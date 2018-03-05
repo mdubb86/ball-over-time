@@ -154,8 +154,8 @@ public class StatsScraperService {
     private boolean processGames(LocalDate date) {
         return transactionTemplate.execute(status -> {
             try {
-                logger.info("Processing games on {}", date);
                 String url = String.format("http://stats.nba.com/stats/scoreboardV2?DayOffset=0&LeagueID=00&gameDate=%02d/%02d/%d", date.getMonthValue(), date.getDayOfMonth(), date.getYear());
+                logger.info("Processing games on {} at {}", date, url);
                 HttpResponse<JsonNode> res = this.get(url).asJson();
                 if (res.getStatus() == HttpStatus.SC_OK) {
                     JsonNode node = res.getBody();
