@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -13,9 +14,9 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.mashape.unirest.http.Unirest;
 
-
 @SpringBootApplication(scanBasePackages = {"com.meridian.ball"})
 @EnableAsync
+@EnableTransactionManagement
 public class Application {
     
     @Bean
@@ -51,6 +52,7 @@ public class Application {
                 }
             }
         };
+      
         Unirest.setObjectMapper(unirestMapper);
         return unirestMapper;
     }

@@ -1,6 +1,8 @@
 package com.meridian.ball.repository;
 
 import java.sql.ResultSet;
+import java.sql.Types;
+import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.List;
 
@@ -47,4 +49,11 @@ public class StatLineRepositoryImpl implements StatLineRepositoryCustom {
         SqlParameterSource params = new MapSqlParameterSource("playerId", playerId);
         return npjt.query(sql, params, rowMapper);
     }
+
+//    @Override
+//    public int deleteByDate(LocalDate date) {
+//        String sql = "delete from stat_line where date == :date";
+//        SqlParameterSource params = new MapSqlParameterSource().addValue("date", date, Types.DATE);
+//        return npjt.update(sql, params);
+//    }
 }

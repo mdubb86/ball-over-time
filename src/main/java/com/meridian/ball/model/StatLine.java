@@ -1,5 +1,6 @@
 package com.meridian.ball.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class StatLine {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long statLineId;
     
-    @ManyToOne
+    @ManyToOne(cascade= {CascadeType.REMOVE})
     @JoinColumn(name = "gameId")
     private Game game;
 
