@@ -4,58 +4,53 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.meridian.ball.json.PlayerSerializer;
-
 @Entity
 @Table
-@JsonSerialize(using = PlayerSerializer.class)
 public class Player {
     
     @Id
-    @JsonProperty("PERSON_ID")
-    private Integer playerId;
-    private String firstName;
-    private String lastName;
-    @JsonProperty("DISPLAY_FIRST_LAST")
-    private String displayName;
-    private String position;
+    private String playerId;
+    private String name;
+    private String pictureUrl;
+    
+    private Long nbaDotComPlayerId;
+    private Boolean hasNbaDotComImage;
+    private String nbaDotComImageChecksum;
 
-    public Integer getPlayerId() {
+    public String getPlayerId() {
         return playerId;
     }
-    public void setPlayerId(Integer playerId) {
+    public void setPlayerId(String playerId) {
         this.playerId = playerId;
     }
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
-    public String getLastName() {
-        return lastName;
+    public String getPictureUrl() {
+        return pictureUrl;
     }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
-    public String getDisplayName() {
-        return displayName;
+    public Long getNbaDotComPlayerId() {
+        return nbaDotComPlayerId;
     }
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setNbaDotComPlayerId(Long nbaDotComPlayerId) {
+        this.nbaDotComPlayerId = nbaDotComPlayerId;
     }
-    public String getPosition() {
-        return position;
+    public Boolean getHasNbaDotComImage() {
+        return hasNbaDotComImage;
     }
-    public void setPosition(String position) {
-        this.position = position;
+    public void setHasNbaDotComImage(Boolean hasNbaDotComImage) {
+        this.hasNbaDotComImage = hasNbaDotComImage;
     }
-    @Override
-    public String toString() {
-        return "Player [playerId=" + playerId + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", displayName=" + displayName
-                + ", position=" + position + "]";
+    public String getNbaDotComImageChecksum() {
+        return nbaDotComImageChecksum;
+    }
+    public void setNbaDotComImageChecksum(String nbaDotComImageChecksum) {
+        this.nbaDotComImageChecksum = nbaDotComImageChecksum;
     }
 }

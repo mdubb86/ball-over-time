@@ -2,6 +2,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-116497886-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116497886-1');
+</script>
+
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,10 +46,9 @@
         </div>
         <div class="inner cover">
           <h1 class="cover-heading"><span th:text="${#numbers.formatInteger(games,3,'COMMA')}"></span> NBA games. <span th:text="${#numbers.formatInteger(stats,3,'COMMA')}"></span> stats.</h1>
-          <p class="lead">Create custom interactive charts of any available stat across all NBA players since 1960.</p>
+          <p class="lead">Create interactive charts with any stat across NBA history</p>
           <p class="lead">
-            <a href="interactive" class="btn btn-lg btn-default">Get Started</a>
-            <a href="interactive" class="btn btn-lg btn-default">See Demo</a>
+            <a href="interactive" class="btn btn-lg btn-default">Let's Go</a>
           </p>
         </div>
         <div class="mastfoot">

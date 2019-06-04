@@ -37,7 +37,7 @@ public class StatService {
                 .collect(Collectors.toList());
     }
     
-    public List<Object[]> getStatsOverTime(Stat stat, int playerId, Aggregation aggregation) {
+    public List<Object[]> getStatsOverTime(Stat stat, String playerId, Aggregation aggregation) {
         switch (aggregation) {
             case NONE:
                 return statRepo.getStatOverTime(stat, playerId);

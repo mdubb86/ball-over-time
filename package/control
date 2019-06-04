@@ -1,0 +1,6 @@
+Package: ballovertime
+Version: 0.1
+Maintainer: Michael Waage
+Architecture: all
+Description: Ball Over Time webapp
+Depends: openjdk-8-jre,postgresql,postgresql-contrib

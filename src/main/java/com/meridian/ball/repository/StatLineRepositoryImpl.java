@@ -29,23 +29,23 @@ public class StatLineRepositoryImpl implements StatLineRepositoryCustom {
     }
 
     @Override
-    public List<Object[]> getStatOverTime(Stat stat, int playerId) {
-        String sql = "select date, " + stat.getDbField() + " as value from stat_line s join game g on s.game_id = g.game_id where player_id = :playerId order by g.date";
+    public List<Object[]> getStatOverTime(Stat stat, String playerId) {
+        String sql = "select date, " + stat.getDbAccessor() + " as value from stat_line s join game g on s.game_id = g.game_id where player_id = :playerId order by g.date";
         SqlParameterSource params = new MapSqlParameterSource("playerId", playerId)
-            .addValue("dbField", stat.getDbField());
+            .addValue("dbField", stat.getDbAccessor());
         return npjt.query(sql, params, rowMapper);
     }
 
     @Override
-    public List<Object[]> getStatOverTimeByMonth(Stat stat, int playerId) {
-        String sql = "select make_date(sub.year, sub.month, 1) as date, sub.value from (select CAST(EXTRACT(year from g.date) as integer) as year, CAST(EXTRACT(month from g.date) as integer) as month, avg(" + stat.getDbField() + ") as value from stat_line s join game g on s.game_id = g.game_id  where player_id = :playerId group by EXTRACT(year from g.date), EXTRACT(month from g.date)) as sub order by date";
+    public List<Object[]> getStatOverTimeByMonth(Stat stat, String playerId) {
+        String sql = "select make_date(sub.year, sub.month, 1) as date, sub.value from (select CAST(EXTRACT(year from g.date) as integer) as year, CAST(EXTRACT(month from g.date) as integer) as month, avg(" + stat.getDbAccessor() + ") as value from stat_line s join game g on s.game_id = g.game_id  where player_id = :playerId group by EXTRACT(year from g.date), EXTRACT(month from g.date)) as sub order by date";
         SqlParameterSource params = new MapSqlParameterSource("playerId", playerId);
         return npjt.query(sql, params, rowMapper);
     }
     
     @Override
-    public List<Object[]> getStatOverTimeBySeason(Stat stat, int playerId) {
-        String sql = "select make_date(sub.season, 1, 1) as date, sub.value from (select CASE WHEN CAST(EXTRACT(month from g.date) as integer) > 8 THEN CAST(EXTRACT(year from g.date) as integer) ELSE CAST(EXTRACT(year from g.date) as integer) - 1 END as season, avg(" + stat.getDbField() + ") as value from stat_line s join game g on s.game_id = g.game_id where player_id = :playerId group by season) as sub order by date";
+    public List<Object[]> getStatOverTimeBySeason(Stat stat, String playerId) {
+        String sql = "select make_date(sub.season, 1, 1) as date, sub.value from (select CASE WHEN CAST(EXTRACT(month from g.date) as integer) > 8 THEN CAST(EXTRACT(year from g.date) as integer) ELSE CAST(EXTRACT(year from g.date) as integer) - 1 END as season, avg(" + stat.getDbAccessor() + ") as value from stat_line s join game g on s.game_id = g.game_id where player_id = :playerId group by season) as sub order by date";
         SqlParameterSource params = new MapSqlParameterSource("playerId", playerId);
         return npjt.query(sql, params, rowMapper);
     }

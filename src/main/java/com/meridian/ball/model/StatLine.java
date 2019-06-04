@@ -1,28 +1,21 @@
 package com.meridian.ball.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.meridian.ball.json.MinutesDeserializer;
 
 @Entity
 @Table(name = "stat_line")
 public class StatLine {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long statLineId;
+    private String statLineId;
     
-    @ManyToOne(cascade= {CascadeType.REMOVE})
+    @ManyToOne
     @JoinColumn(name = "gameId")
     private Game game;
 
@@ -35,46 +28,35 @@ public class StatLine {
     @JoinColumn(name = "teamId")
     private Team team;
 
-    private String startPosition;
-    private String comment;
-    @JsonDeserialize(using = MinutesDeserializer.class)
     private Double min;
-    private Integer pts;
-    private Integer ast;
-    private Integer dreb;
-    private Integer oreb;
     private Integer fgm;
     private Integer fga;
     private Integer fg3m;
     private Integer fg3a;
     private Integer fta;
     private Integer ftm;
+    private Integer oreb;
+    private Integer dreb;
+    private Integer ast;
     private Integer blk;
+    private Integer tov;
     private Integer stl;
-    
-    @JsonProperty("to")
-    private Integer turnOvers;
-
     private Integer pf;
-    private Double plusMinus;
-    private Double offRating;
-    private Double defRating;
-    private Double netRating;
-    private Double usgPct;
-    private Double astPct;
-    private Double drebPct;
-    private Double orebPct;
+    private Integer pts;
+    private Integer plusMinus;
     private Double tsPct;
-    private Double efgPct;
-    private Double astRatio;
-    private Double tmTovPct;
-    private Double astTov;
-    private Double pace;
-    private Double pie;
-    public long getStatLineId() {
+    private Double orebPct;
+    private Double drebPct;
+    private Double astPct;
+    private Double blkPct;
+    private Double tovPct;
+    private Double usgPct;
+    private Integer offRating;
+    private Integer defRating;
+    public String getStatLineId() {
         return statLineId;
     }
-    public void setStatLineId(long statLineId) {
+    public void setStatLineId(String statLineId) {
         this.statLineId = statLineId;
     }
     public Game getGame() {
@@ -95,53 +77,11 @@ public class StatLine {
     public void setTeam(Team team) {
         this.team = team;
     }
-    public String getStartPosition() {
-        return startPosition;
-    }
-    public void setStartPosition(String startPosition) {
-        this.startPosition = startPosition;
-    }
-    public String getComment() {
-        return comment;
-    }
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
     public Double getMin() {
         return min;
     }
     public void setMin(Double min) {
         this.min = min;
-    }
-    public Integer getPts() {
-        return pts;
-    }
-    public void setPts(Integer pts) {
-        this.pts = pts;
-    }
-    public Integer getTurnOvers() {
-        return turnOvers;
-    }
-    public void setTurnOvers(Integer turnOvers) {
-        this.turnOvers = turnOvers;
-    }
-    public Integer getAst() {
-        return ast;
-    }
-    public void setAst(Integer ast) {
-        this.ast = ast;
-    }
-    public Integer getDreb() {
-        return dreb;
-    }
-    public void setDreb(Integer dreb) {
-        this.dreb = dreb;
-    }
-    public Integer getOreb() {
-        return oreb;
-    }
-    public void setOreb(Integer oreb) {
-        this.oreb = oreb;
     }
     public Integer getFgm() {
         return fgm;
@@ -179,11 +119,35 @@ public class StatLine {
     public void setFtm(Integer ftm) {
         this.ftm = ftm;
     }
+    public Integer getOreb() {
+        return oreb;
+    }
+    public void setOreb(Integer oreb) {
+        this.oreb = oreb;
+    }
+    public Integer getDreb() {
+        return dreb;
+    }
+    public void setDreb(Integer dreb) {
+        this.dreb = dreb;
+    }
+    public Integer getAst() {
+        return ast;
+    }
+    public void setAst(Integer ast) {
+        this.ast = ast;
+    }
     public Integer getBlk() {
         return blk;
     }
     public void setBlk(Integer blk) {
         this.blk = blk;
+    }
+    public Integer getTov() {
+        return tov;
+    }
+    public void setTov(Integer tov) {
+        this.tov = tov;
     }
     public Integer getStl() {
         return stl;
@@ -191,65 +155,23 @@ public class StatLine {
     public void setStl(Integer stl) {
         this.stl = stl;
     }
-    public Integer getTurnovers() {
-        return turnOvers;
-    }
-    public void setTurnovers(Integer turnovers) {
-        this.turnOvers = turnovers;
-    }
     public Integer getPf() {
         return pf;
     }
     public void setPf(Integer pf) {
         this.pf = pf;
     }
-    public Double getPlusMinus() {
+    public Integer getPts() {
+        return pts;
+    }
+    public void setPts(Integer pts) {
+        this.pts = pts;
+    }
+    public Integer getPlusMinus() {
         return plusMinus;
     }
-    public void setPlusMinus(Double plusMinus) {
+    public void setPlusMinus(Integer plusMinus) {
         this.plusMinus = plusMinus;
-    }
-    public Double getOffRating() {
-        return offRating;
-    }
-    public void setOffRating(Double offRating) {
-        this.offRating = offRating;
-    }
-    public Double getDefRating() {
-        return defRating;
-    }
-    public void setDefRating(Double defRating) {
-        this.defRating = defRating;
-    }
-    public Double getNetRating() {
-        return netRating;
-    }
-    public void setNetRating(Double netRating) {
-        this.netRating = netRating;
-    }
-    public Double getUsgPct() {
-        return usgPct;
-    }
-    public void setUsgPct(Double usgPct) {
-        this.usgPct = usgPct;
-    }
-    public Double getAstPct() {
-        return astPct;
-    }
-    public void setAstPct(Double astPct) {
-        this.astPct = astPct;
-    }
-    public Double getDrebPct() {
-        return drebPct;
-    }
-    public void setDrebPct(Double drebPct) {
-        this.drebPct = drebPct;
-    }
-    public Double getOrebPct() {
-        return orebPct;
-    }
-    public void setOrebPct(Double orebPct) {
-        this.orebPct = orebPct;
     }
     public Double getTsPct() {
         return tsPct;
@@ -257,41 +179,54 @@ public class StatLine {
     public void setTsPct(Double tsPct) {
         this.tsPct = tsPct;
     }
-    public Double getEfgPct() {
-        return efgPct;
+    public Double getOrebPct() {
+        return orebPct;
     }
-    public void setEfgPct(Double efgPct) {
-        this.efgPct = efgPct;
+    public void setOrebPct(Double orebPct) {
+        this.orebPct = orebPct;
     }
-    public Double getAstRatio() {
-        return astRatio;
+    public Double getDrebPct() {
+        return drebPct;
     }
-    public void setAstRatio(Double astRatio) {
-        this.astRatio = astRatio;
+    public void setDrebPct(Double drebPct) {
+        this.drebPct = drebPct;
     }
-    public Double getTmTovPct() {
-        return tmTovPct;
+    public Double getAstPct() {
+        return astPct;
     }
-    public void setTmTovPct(Double tmTovPct) {
-        this.tmTovPct = tmTovPct;
+    public void setAstPct(Double astPct) {
+        this.astPct = astPct;
     }
-    public Double getAstTov() {
-        return astTov;
+    public Double getBlkPct() {
+        return blkPct;
     }
-    public void setAstTov(Double astTov) {
-        this.astTov = astTov;
+    public void setBlkPct(Double blkPct) {
+        this.blkPct = blkPct;
     }
-    public Double getPace() {
-        return pace;
+    public Double getTovPct() {
+        return tovPct;
     }
-    public void setPace(Double pace) {
-        this.pace = pace;
+    public void setTovPct(Double tovPct) {
+        this.tovPct = tovPct;
     }
-    public Double getPie() {
-        return pie;
+    public Double getUsgPct() {
+        return usgPct;
     }
-    public void setPie(Double pie) {
-        this.pie = pie;
+    public void setUsgPct(Double usgPct) {
+        this.usgPct = usgPct;
     }
-}
+    public Integer getOffRating() {
+        return offRating;
+    }
+    public void setOffRating(Integer offRating) {
+        this.offRating = offRating;
+    }
+    public Integer getDefRating() {
+        return defRating;
+    }
+    public void setDefRating(Integer defRating) {
+        this.defRating = defRating;
+    }
     
+    
+}

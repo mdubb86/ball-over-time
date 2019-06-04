@@ -11,7 +11,7 @@ $(function() {
 
     $('.typeahead').typeahead(null, {
         name: 'players',
-        display: 'displayName',
+        display: 'name',
         source: players,
         highlight: true,
         hint: false
@@ -42,7 +42,7 @@ $(function() {
         selected.forEach(function(player) {
             fetchData(player.playerId, function(data) {
                 chart.series.forEach(function(series) {
-                    if (series.name === player.displayName) {
+                    if (series.name === player.name) {
                         series.setData(data)
                     }
                 });
@@ -58,7 +58,7 @@ $(function() {
 
     function addPlayer(player) {
         // Add player picture to selected area
-        var $item = $('<div class="grid-item" player_id="' + player.playerId + '"><img src="http://stats.nba.com/media/players/230x185/' + player.playerId + '.png"/><p class="name">' + player.displayName + '</div>');
+        var $item = $('<div class="grid-item" player_id="' + player.playerId + '"><img src="/players/' + player.playerId + '/image"/><p class="name">' + player.name + '</div>');
         $grid.append($item)
         .isotope('appended', $item)
         .isotope();
@@ -70,7 +70,7 @@ $(function() {
         // Fetch data and create series on chart
         fetchData(player.playerId, function(data) {
             chart.addSeries({
-                name: player.displayName,
+                name: player.name,
                 data: data
             });
             selected.push(player);
@@ -220,7 +220,7 @@ $(function() {
                 }
             },
             series: {
-                connectNulls: true
+                connectNulls: false
             }
         },
         tooltip: {

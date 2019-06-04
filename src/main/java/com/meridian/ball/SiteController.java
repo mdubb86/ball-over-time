@@ -3,7 +3,6 @@ package com.meridian.ball;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.meridian.ball.model.NameAndId;
 import com.meridian.ball.model.Player;
 import com.meridian.ball.model.Stat;
 import com.meridian.ball.repository.GameRepository;
@@ -54,7 +52,7 @@ public class SiteController {
     @RequestMapping()
     public String loadCover(Model model) {
         model.addAttribute("games", gameRepository.count());
-        model.addAttribute("stats", statService.getCount() * 34);
+        model.addAttribute("stats", statService.getCount() * Stat.values().length);
         return "cover";
     }
     
@@ -71,7 +69,7 @@ public class SiteController {
     public String loadInteractive(Model model,
             @CookieValue(value="aggregation", defaultValue="season") String aggregation,
             @CookieValue(value="stat", defaultValue="points") String stat,
-            @CookieValue(value="players", defaultValue="893,977,2544") String playerIds) {
+            @CookieValue(value="players", defaultValue="schaydo01,chambwi01,ervinju01,jordami01,bryanko01,jamesle01") String playerIds) {
 
         // Lookup players
         List<Player> players = playerService.findByIds(playerIds);
@@ -80,7 +78,7 @@ public class SiteController {
         model.addAttribute("stats", statService.getStats());
         model.addAttribute("stat", stat);
         model.addAttribute("aggregation", aggregation);
-        model.addAttribute("players", players.stream().map(p -> new NameAndId(p)).collect(Collectors.toList()));
+        model.addAttribute("players", players);
         return "interactive";
     }
 
@@ -88,11 +86,21 @@ public class SiteController {
     public @ResponseBody List<Player> getPlayers(@RequestParam("query") String query) {
         return playerService.findByUsernameContaining(query);
     }
+    
+    @RequestMapping("/players/{playerId}/image")
+    public String getPlayerImage(@PathVariable("playerId") String playerId) {
+        Player player = playerService.findById(playerId);
+        if (player.getHasNbaDotComImage()) {
+            return "redirect:https://storage.googleapis.com/ballovertime-player-images/" + playerId + ".png";
+        } else {
+            return "redirect:null";
+        }
+    }
 
     @RequestMapping("/data")
     public @ResponseBody List<Object[]> getData(
             @RequestParam("stat") String statName,
-            @RequestParam("playerId") Integer playerId,
+            @RequestParam("playerId") String playerId,
             @RequestParam("aggregation") String aggregationName) {
         Stat stat = Stat.valueOf(statName.replace("-", "_").toUpperCase());
         Aggregation aggregation = Aggregation.valueOf(aggregationName.toUpperCase());

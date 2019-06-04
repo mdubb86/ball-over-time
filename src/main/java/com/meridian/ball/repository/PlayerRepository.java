@@ -6,8 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.meridian.ball.model.Player;
 
-public interface PlayerRepository extends CrudRepository<Player, Integer>, PlayerRepositoryCustom {
+public interface PlayerRepository extends CrudRepository<Player, String>, PlayerRepositoryCustom {
     
-    List<Player> findByDisplayNameContainingIgnoreCaseOrderByDisplayNameDesc(String displayName);
+    List<Player> findByNameContainingIgnoreCaseOrderByNameDesc(String name);
 
 }

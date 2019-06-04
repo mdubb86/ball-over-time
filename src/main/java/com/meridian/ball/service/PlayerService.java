@@ -19,14 +19,17 @@ public class PlayerService {
         this.playerRepo = playerRepo;
     }
     
-    public List<Player> findByIds(String playerIdsStr) {
-        Set<Integer> playerIds = Stream.of(playerIdsStr.split(","))
-                .map(s -> Integer.parseInt(s))
+    public Player findById(String playerId) {
+        return playerRepo.findOne(playerId);
+    }
+    
+    public List<Player> findByIds(String playerIdsString) {
+        Set<String> playerIds = Stream.of(playerIdsString.split(","))
                 .collect(Collectors.toSet());
         return playerRepo.findPlayersByIds(playerIds);
     }
-    
+
     public List<Player> findByUsernameContaining(String query) {
-        return playerRepo.findByDisplayNameContainingIgnoreCaseOrderByDisplayNameDesc(query);
+        return playerRepo.findByNameContainingIgnoreCaseOrderByNameDesc(query);
     }
 }

@@ -34,7 +34,7 @@ public class SavedChartService {
         SavedChart chart = savedChartRepo.findOne(chartId);
         List<Player> players = new ArrayList<>();
         for (String playerId : chart.getPlayerIds().split(",")) {
-            Player player = playerRepo.findOne(Integer.parseInt(playerId));
+            Player player = playerRepo.findOne(playerId);
             players.add(player);
         }
         Map<String, Object> result = new HashMap<>();

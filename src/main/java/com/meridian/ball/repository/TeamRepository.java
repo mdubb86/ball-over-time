@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.meridian.ball.model.Team;
 
-public interface TeamRepository extends CrudRepository<Team, Integer> {
+public interface TeamRepository extends CrudRepository<Team, String> {
 
 }

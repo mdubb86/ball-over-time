@@ -1,0 +1,13 @@
+[Unit]
+Description=Ball Over Time Webapp
+After=network-online.target
+
+[Service]
+SyslogIdentifier=ballovertime
+ExecStart=/usr/bin/java -Dspring.config.location=/home/ballovertime/conf/ballovertime.properties -Dlog4j.configurationFile=/home/ballovertime/app/conf/log4j2.xml -jar /home/ballovertime/app/bin/ballovertime.jar
+User=ballovertime
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+ 
