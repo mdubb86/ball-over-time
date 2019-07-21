@@ -1,0 +1,110 @@
+INSERT INTO public.team (team_id, name) VALUES ('dnn', 'Denver Nuggets');
+INSERT INTO public.team (team_id, name) VALUES ('tri', 'Tri-Cities Blackhawks');
+INSERT INTO public.team (team_id, name) VALUES ('stb', 'St. Louis Bombers');
+INSERT INTO public.team (team_id, name) VALUES ('nyk', 'New York Knicks');
+INSERT INTO public.team (team_id, name) VALUES ('she', 'Sheboygan Red Skins');
+INSERT INTO public.team (team_id, name) VALUES ('roc', 'Rochester Royals');
+INSERT INTO public.team (team_id, name) VALUES ('ino', 'Indianapolis Olympians');
+INSERT INTO public.team (team_id, name) VALUES ('chs', 'Chicago Stags');
+INSERT INTO public.team (team_id, name) VALUES ('wsc', 'Washington Capitols');
+INSERT INTO public.team (team_id, name) VALUES ('blb', 'Baltimore Bullets');
+INSERT INTO public.team (team_id, name) VALUES ('mnl', 'Minneapolis Lakers');
+INSERT INTO public.team (team_id, name) VALUES ('wat', 'Waterloo Hawks');
+INSERT INTO public.team (team_id, name) VALUES ('phw', 'Philadelphia Warriors');
+INSERT INTO public.team (team_id, name) VALUES ('and', 'Anderson Packers');
+INSERT INTO public.team (team_id, name) VALUES ('bos', 'Boston Celtics');
+INSERT INTO public.team (team_id, name) VALUES ('ftw', 'Fort Wayne Pistons');
+INSERT INTO public.team (team_id, name) VALUES ('syr', 'Syracuse Nationals');
+INSERT INTO public.team (team_id, name) VALUES ('mlh', 'Milwaukee Hawks');
+INSERT INTO public.team (team_id, name) VALUES ('stl', 'St. Louis Hawks');
+INSERT INTO public.team (team_id, name) VALUES ('det', 'Detroit Pistons');
+INSERT INTO public.team (team_id, name) VALUES ('cin', 'Cincinnati Royals');
+INSERT INTO public.team (team_id, name) VALUES ('lal', 'Los Angeles Lakers');
+INSERT INTO public.team (team_id, name) VALUES ('chp', 'Chicago Packers');
+INSERT INTO public.team (team_id, name) VALUES ('chz', 'Chicago Zephyrs');
+INSERT INTO public.team (team_id, name) VALUES ('sfw', 'San Francisco Warriors');
+INSERT INTO public.team (team_id, name) VALUES ('phi', 'Philadelphia 76ers');
+INSERT INTO public.team (team_id, name) VALUES ('bal', 'Baltimore Bullets');
+INSERT INTO public.team (team_id, name) VALUES ('chi', 'Chicago Bulls');
+INSERT INTO public.team (team_id, name) VALUES ('ana', 'Anaheim Amigos');
+INSERT INTO public.team (team_id, name) VALUES ('oak', 'Oakland Oaks');
+INSERT INTO public.team (team_id, name) VALUES ('sea', 'Seattle SuperSonics');
+INSERT INTO public.team (team_id, name) VALUES ('sdr', 'San Diego Rockets');
+INSERT INTO public.team (team_id, name) VALUES ('ken', 'Kentucky Colonels');
+INSERT INTO public.team (team_id, name) VALUES ('ina', 'Indiana Pacers');
+INSERT INTO public.team (team_id, name) VALUES ('dnr', 'Denver Rockets');
+INSERT INTO public.team (team_id, name) VALUES ('dlc', 'Dallas Chaparrals');
+INSERT INTO public.team (team_id, name) VALUES ('hsm', 'Houston Mavericks');
+INSERT INTO public.team (team_id, name) VALUES ('nob', 'New Orleans Buccaneers');
+INSERT INTO public.team (team_id, name) VALUES ('mnm', 'Minnesota Muskies');
+INSERT INTO public.team (team_id, name) VALUES ('nja', 'New Jersey Americans');
+INSERT INTO public.team (team_id, name) VALUES ('ptp', 'Pittsburgh Pipers');
+INSERT INTO public.team (team_id, name) VALUES ('mil', 'Milwaukee Bucks');
+INSERT INTO public.team (team_id, name) VALUES ('atl', 'Atlanta Hawks');
+INSERT INTO public.team (team_id, name) VALUES ('pho', 'Phoenix Suns');
+INSERT INTO public.team (team_id, name) VALUES ('nya', 'New York Nets');
+INSERT INTO public.team (team_id, name) VALUES ('mmf', 'Miami Floridians');
+INSERT INTO public.team (team_id, name) VALUES ('mnp', 'Minnesota Pipers');
+INSERT INTO public.team (team_id, name) VALUES ('las', 'Los Angeles Stars');
+INSERT INTO public.team (team_id, name) VALUES ('wsa', 'Washington Capitols');
+INSERT INTO public.team (team_id, name) VALUES ('car', 'Carolina Cougars');
+INSERT INTO public.team (team_id, name) VALUES ('buf', 'Buffalo Braves');
+INSERT INTO public.team (team_id, name) VALUES ('uts', 'Utah Stars');
+INSERT INTO public.team (team_id, name) VALUES ('cle', 'Cleveland Cavaliers');
+INSERT INTO public.team (team_id, name) VALUES ('flo', 'The Floridians');
+INSERT INTO public.team (team_id, name) VALUES ('ptc', 'Pittsburgh Condors');
+INSERT INTO public.team (team_id, name) VALUES ('por', 'Portland Trail Blazers');
+INSERT INTO public.team (team_id, name) VALUES ('vir', 'Virginia Squires');
+INSERT INTO public.team (team_id, name) VALUES ('tex', 'Texas Chaparrals');
+INSERT INTO public.team (team_id, name) VALUES ('mmp', 'Memphis Pros');
+INSERT INTO public.team (team_id, name) VALUES ('hou', 'Houston Rockets');
+INSERT INTO public.team (team_id, name) VALUES ('gsw', 'Golden State Warriors');
+INSERT INTO public.team (team_id, name) VALUES ('kco', 'Kansas City-Omaha Kings');
+INSERT INTO public.team (team_id, name) VALUES ('mmt', 'Memphis Tams');
+INSERT INTO public.team (team_id, name) VALUES ('sda', 'San Diego Conquistadors');
+INSERT INTO public.team (team_id, name) VALUES ('cap', 'Capital Bullets');
+INSERT INTO public.team (team_id, name) VALUES ('saa', 'San Antonio Spurs');
+INSERT INTO public.team (team_id, name) VALUES ('noj', 'New Orleans Jazz');
+INSERT INTO public.team (team_id, name) VALUES ('mms', 'Memphis Sounds');
+INSERT INTO public.team (team_id, name) VALUES ('dna', 'Denver Nuggets');
+INSERT INTO public.team (team_id, name) VALUES ('ssl', 'Spirits of St. Louis');
+INSERT INTO public.team (team_id, name) VALUES ('wsb', 'Washington Bullets');
+INSERT INTO public.team (team_id, name) VALUES ('kck', 'Kansas City Kings');
+INSERT INTO public.team (team_id, name) VALUES ('sds', 'San Diego Sails');
+INSERT INTO public.team (team_id, name) VALUES ('ind', 'Indiana Pacers');
+INSERT INTO public.team (team_id, name) VALUES ('nyn', 'New York Nets');
+INSERT INTO public.team (team_id, name) VALUES ('sas', 'San Antonio Spurs');
+INSERT INTO public.team (team_id, name) VALUES ('den', 'Denver Nuggets');
+INSERT INTO public.team (team_id, name) VALUES ('njn', 'New Jersey Nets');
+INSERT INTO public.team (team_id, name) VALUES ('sdc', 'San Diego Clippers');
+INSERT INTO public.team (team_id, name) VALUES ('uta', 'Utah Jazz');
+INSERT INTO public.team (team_id, name) VALUES ('dal', 'Dallas Mavericks');
+INSERT INTO public.team (team_id, name) VALUES ('lac', 'Los Angeles Clippers');
+INSERT INTO public.team (team_id, name) VALUES ('sac', 'Sacramento Kings');
+INSERT INTO public.team (team_id, name) VALUES ('chh', 'Charlotte Hornets');
+INSERT INTO public.team (team_id, name) VALUES ('mia', 'Miami Heat');
+INSERT INTO public.team (team_id, name) VALUES ('min', 'Minnesota Timberwolves');
+INSERT INTO public.team (team_id, name) VALUES ('orl', 'Orlando Magic');
+INSERT INTO public.team (team_id, name) VALUES ('van', 'Vancouver Grizzlies');
+INSERT INTO public.team (team_id, name) VALUES ('tor', 'Toronto Raptors');
+INSERT INTO public.team (team_id, name) VALUES ('was', 'Washington Wizards');
+INSERT INTO public.team (team_id, name) VALUES ('mem', 'Memphis Grizzlies');
+INSERT INTO public.team (team_id, name) VALUES ('noh', 'New Orleans Hornets');
+INSERT INTO public.team (team_id, name) VALUES ('cha', 'Charlotte Bobcats');
+INSERT INTO public.team (team_id, name) VALUES ('nok', 'New Orleans/Oklahoma City Hornets');
+INSERT INTO public.team (team_id, name) VALUES ('okc', 'Oklahoma City Thunder');
+INSERT INTO public.team (team_id, name) VALUES ('brk', 'Brooklyn Nets');
+INSERT INTO public.team (team_id, name) VALUES ('nop', 'New Orleans Pelicans');
+INSERT INTO public.team (team_id, name) VALUES ('cho', 'Charlotte Hornets');
+
+COPY public.player (player_id, name, picture_url, has_nba_dot_com_image, nba_dot_com_image_checksum, nba_dot_com_player_id) FROM stdin;
+duncati01	Tim Duncan	https://d2cwpp38twqe55.cloudfront.net/req/201803071/images/players/duncati01.jpg	t	353cd855f00f1931fa83ffc580af1af5	1495
+bryanko01	Kobe Bryant	https://d2cwpp38twqe55.cloudfront.net/req/201803071/images/players/bryanko01.jpg	t	532611ad26ed970f62a8a83d094b4dd2	977
+\.
+
+COPY public.game (game_id, date, home_win, home_team_id, vistor_team_id) FROM stdin;
+199710310DEN	1997-10-31	f	den	sas
+201605120OKC	2016-05-12	t	okc	sas
+\.
+
+
