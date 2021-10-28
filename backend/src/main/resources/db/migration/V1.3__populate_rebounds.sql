@@ -1,1 +1,0 @@
-update stat_line set reb = coalesce(oreb, 0) + coalesce(dreb, 0);

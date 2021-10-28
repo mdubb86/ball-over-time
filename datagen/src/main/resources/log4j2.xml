@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration shutdownHook="disable">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyy/MM/dd HH:mm:ss.SSS}\t[%t]\t%-5level\t%logger{36}\t%msg%n"/>
+<!--            <PatternLayout>-->
+<!--                <Pattern>%highlight{%msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=black, DEBUG=green bold, TRACE=blue}</Pattern>-->
+<!--            </PatternLayout-->
+        </Console>
+
+    </Appenders>
+    <Loggers>
+        <Root level="warn">
+            <AppenderRef ref="console"/>
+        </Root>
+        <Logger name="com.ballovertime" level="info" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+    </Loggers>
+</Configuration>
